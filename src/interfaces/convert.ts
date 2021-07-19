@@ -27,3 +27,9 @@ export interface IConversion {
   date?: string;
   result?: number;
 }
+export interface IConversionParams {
+  conversionFrom: string;
+  conversionTo: string;
+  amount: string;
+  date?: string;
+}

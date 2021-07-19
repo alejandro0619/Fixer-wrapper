@@ -1,8 +1,16 @@
 import axios from 'axios';
 import { URL_BASE } from '../keys.js';
 import { ILastest } from '../interfaces/Lastest.js';
-import { IConversion} from '../interfaces/convert.js';
-import { ITimeSeriesParams } from '../interfaces/timeseries.js'
+import {
+  IConversion,
+  IConversionParams
+} from '../interfaces/convert.js';
+
+import {
+  ITimeSeriesParams,
+  ITimeSeries
+} from '../interfaces/timeseries.js';
+
 class FixerWrapper {
   private _access_key: string;
   constructor(access_key: string) {
@@ -25,7 +33,12 @@ class FixerWrapper {
     return response.data;
   }
 
-  public async convert(conversionFrom: string, conversionTo: string, amount: string, date?: string): Promise<IConversion> {
+  public async convert(params: IConversionParams): Promise<IConversion> {
+    const {
+      conversionFrom,
+      conversionTo,
+      amount,
+      date } = params;
 
     const url: string = typeof date !== 'undefined'
       ? `/convert?access_key=${this._access_key}&from=${conversionFrom}&to=${conversionTo}&amount=${amount}&date=${date}`
@@ -39,27 +52,25 @@ class FixerWrapper {
     return response.data;
   }
 
-  public async timeSeries(params: ITimeSeriesParams) {
+  public async timeSeries(params: ITimeSeriesParams): Promise<ITimeSeries> {
     const {
       startDate,
       endDate,
       base,
       symbols } = params;
     
-    const baseParam = typeof base !== 'undefined'
-      ? `&base=${base}`
-      : '';
+    const baseParam = typeof base !== 'undefined' ? `&base=${base}` : '';
     
     const url = typeof symbols !== 'undefined'
-      ? `/timeseries/access_key=${this._access_key}&start_date=${startDate}&end_date=${endDate}${baseParam}&symbols=${symbols}`
-      : `/timeseries/access_key=${this._access_key}&start_date=${startDate}&end_date=${endDate}`
+      ? `/timeseries?access_key=${this._access_key}&start_date=${startDate}&end_date=${endDate}${baseParam}&symbols=${symbols}`
+      : `/timeseries?access_key=${this._access_key}&start_date=${startDate}&end_date=${endDate}`;
     
     const response = await axios({
       url: url,
       method: 'GET',
       baseURL: URL_BASE
     });
-    return response;
+    return response.data;
   }
 };
 
