@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "Spaghetti <alejandrolpz0619@gmail.com>",
@@ -15,5 +15,6 @@
   "devDependencies": {
     "@types/node": "^16.3.3",
     "typescript": "^4.3.5"
-  }
+  },
+  "type": "module"
 }
