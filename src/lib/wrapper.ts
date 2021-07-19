@@ -2,7 +2,7 @@ import axios from 'axios';
 import { URL_BASE } from '../keys.js';
 import { ILastest } from '../interfaces/Lastest.js';
 import { IConversion} from '../interfaces/convert.js';
-
+import { ITimeSeriesParams } from '../interfaces/timeseries.js'
 class FixerWrapper {
   private _access_key: string;
   constructor(access_key: string) {
@@ -38,5 +38,30 @@ class FixerWrapper {
     });
     return response.data;
   }
-}
+
+  public async timeSeries(params: ITimeSeriesParams) {
+    const {
+      startDate,
+      endDate,
+      base,
+      symbols } = params;
+    
+    const baseParam = typeof base !== 'undefined'
+      ? `&base=${base}`
+      : '';
+    
+    const url = typeof symbols !== 'undefined'
+      ? `/timeseries/access_key=${this._access_key}&start_date=${startDate}&end_date=${endDate}${baseParam}&symbols=${symbols}`
+      : `/timeseries/access_key=${this._access_key}&start_date=${startDate}&end_date=${endDate}`
+    
+    const response = await axios({
+      url: url,
+      method: 'GET',
+      baseURL: URL_BASE
+    });
+    return response;
+  }
+};
+
+
 
