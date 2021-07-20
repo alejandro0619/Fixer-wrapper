@@ -10,7 +10,7 @@ import {
   ITimeSeriesParams,
   ITimeSeries
 } from '../interfaces/timeseries.js';
-
+import { IHistorical } from '../interfaces/historical.js'
 class FixerWrapper {
   private _access_key: string;
   constructor(access_key: string) {
@@ -72,7 +72,11 @@ class FixerWrapper {
     });
     return response.data;
   }
+
+  public async historical(date: string, symbols: string): Promise<IHistorical> {
+    const response = await axios({
+      url: `${date}?access_key=${this._access_key}&type=${symbols}`
+    });
+    return response.data;
+  }
 };
-
-
-
