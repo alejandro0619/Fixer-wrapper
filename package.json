@@ -1,7 +1,7 @@
 {
   "name": "fixer-wrapper",
   "version": "1.0.0",
-  "description": "",
+  "description": "Fixer.io Unofficial wrapper for Javascript",
   "main": "index.js",
   "scripts": {
     "build": "tsc"
