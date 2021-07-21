@@ -1,6 +1,6 @@
 {
   "name": "fixer-wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fixer.io Unofficial wrapper for Javascript",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "keywords": ["fixer", "currency", "converter", "fixer.io", "fixer.io"],
   "author": "Spaghetti <alejandrolpz0619@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1"
   },

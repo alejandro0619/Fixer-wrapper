@@ -39,34 +39,34 @@
 
     Methods ->
      ❇️Lastest: 
-     ➡️ Required: 
-     ➡️ Optional: bases: string,
+     > Required: 
+     > Optional: bases: string,
                  symbols: string.
     ❇️Convert:
-     ➡️ Required: convertFrom: string,
+     > Required: convertFrom: string,
                  convertTo: string,
                  amount: string,
                  base: string.
-     ➡️ Optional: 
+     > Optional: 
 
     ❇️TimeSeries:
-     ➡️ Required: startDate: string,
+     > Required: startDate: string,
                  endDate: string.
 
-     ➡️ Optional: base: string,
+     > Optional: base: string,
                  symbols: string.
 
     ❇️Historical: 
-      ➡️ Required: date: string.
+      > Required: date: string.
 
-      ➡️ Optional: base: string,
+      > Optional: base: string,
                   symbols: string.
 
     ❇️Fluctuation:
-      ➡️ Required: startDate: string,
+      > Required: startDate: string,
                   endDate: string.
 
-      ➡️ Optional: base: string,
+      > Optional: base: string,
                   symbols: string
 
         
@@ -149,7 +149,4 @@ This software uses the following open source packages:
 ### The source code of this project is under the [MIT license](https://github.com/alejandro0619/Fixer-wrapper/blob/main/LICENSE) 
 
 ---
-
-> GitHub [@Tsukiapp](https://github.com/Tsukiapp) &nbsp;&nbsp;
-
 > Github [@alejandro0619](https://github.com/alejandro0619) &nbsp;&nbsp;
