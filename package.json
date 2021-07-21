@@ -1,6 +1,6 @@
 {
   "name": "fixer-wrapper",
-  "version": "1.0.3",
+  "version": "1.1.3",
   "description": "Fixer.io Unofficial wrapper for Javascript",
   "main": "./dist/index.js",
   "scripts": {
