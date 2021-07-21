@@ -1,12 +1,12 @@
 {
   "name": "fixer-wrapper",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Fixer.io Unofficial wrapper for Javascript",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "tsc"
   },
-  "keywords": ["fixer", "currency", "converter", "fixer.io", "fixer.io"],
+  "keywords": ["fixer", "currency", "converter","fixer.io"],
   "author": "Spaghetti <alejandrolpz0619@gmail.com>",
   "license": "MIT",
   "dependencies": {

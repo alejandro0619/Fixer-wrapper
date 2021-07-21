@@ -40,8 +40,10 @@
     Methods ->
      ❇️Lastest: 
      > Required: 
+
      > Optional: bases: string,
                  symbols: string.
+
     ❇️Convert:
      > Required: convertFrom: string,
                  convertTo: string,
