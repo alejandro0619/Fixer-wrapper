@@ -1,7 +1,7 @@
 export interface ITimeSeriesParams {
   startDate: string;
   endDate: string;
-  base?: string;
+  baseParam?: string;
   symbols?: string;
 }
 interface IError {

@@ -17,9 +17,9 @@ class FixerWrapper {
     this._access_key = access_key;
   }
  
-  public async latest(convertTo?: string, baseCurrency?: string): Promise<ILastest> {
+  public async latest(convertTo?: string, baseParam?: string): Promise<ILastest> {
 
-    const base: string = typeof baseCurrency !== 'undefined' ? `&base=${baseCurrency}` : '';
+    const base: string = typeof baseParam !== 'undefined' ? `&base=${baseParam}` : '';
     
     const url: string = typeof convertTo !== 'undefined'
       ? `/latest?access_key=${this._access_key}&symbols=${convertTo}${base}`
@@ -56,14 +56,14 @@ class FixerWrapper {
     const {
       startDate,
       endDate,
-      base,
+      baseParam,
       symbols } = params;
     
-    const baseParam = typeof base !== 'undefined' ? `&base=${base}` : '';
+    const base = typeof baseParam !== 'undefined' ? `&base=${baseParam}` : '';
     
     const url = typeof symbols !== 'undefined'
-      ? `/timeseries?access_key=${this._access_key}&start_date=${startDate}&end_date=${endDate}${baseParam}&symbols=${symbols}`
-      : `/timeseries?access_key=${this._access_key}&start_date=${startDate}&end_date=${endDate}`;
+      ? `/timeseries?access_key=${this._access_key}&start_date=${startDate}&end_date=${endDate}${base}&symbols=${symbols}`
+      : `/timeseries?access_key=${this._access_key}&start_date=${startDate}&end_date=${endDate}${base}`;
     
     const response = await axios({
       url: url,
@@ -73,9 +73,17 @@ class FixerWrapper {
     return response.data;
   }
 
-  public async historical(date: string, symbols: string): Promise<IHistorical> {
+  public async historical(date: string, baseParam?: string, symbols?: string,): Promise<IHistorical>{
+    const base = typeof baseParam !== 'undefined' ? `&base=${baseParam}` : '';
+
+    const url = typeof symbols !== 'undefined'
+      ? `${date}?access_key=${this._access_key}${base}&symbols=${symbols}`
+      : `${date}?access_key=${this._access_key}${base}`;
+    
     const response = await axios({
-      url: `${date}?access_key=${this._access_key}&type=${symbols}`
+      url: url,
+      method: 'GET',
+      baseURL: URL_BASE
     });
     return response.data;
   }
