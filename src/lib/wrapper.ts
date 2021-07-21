@@ -11,18 +11,22 @@ import {
   ITimeSeries
 } from '../interfaces/timeseries.js';
 import { IHistorical } from '../interfaces/historical.js'
-class FixerWrapper {
+import {
+  IFluctuationParams,
+  IFluctuation
+} from '../interfaces/fluctuation.js'
+export default class FixerWrapper {
   private _access_key: string;
   constructor(access_key: string) {
     this._access_key = access_key;
   }
  
-  public async latest(convertTo?: string, baseParam?: string): Promise<ILastest> {
+  public async latest(symbols?: string, baseParam?: string): Promise<ILastest> {
 
     const base: string = typeof baseParam !== 'undefined' ? `&base=${baseParam}` : '';
     
-    const url: string = typeof convertTo !== 'undefined'
-      ? `/latest?access_key=${this._access_key}&symbols=${convertTo}${base}`
+    const url: string = typeof symbols !== 'undefined'
+      ? `/latest?access_key=${this._access_key}&symbols=${symbols}${base}`
       : `/latest?access_key=${this._access_key}`;
 
     const response = await axios({
@@ -74,9 +78,9 @@ class FixerWrapper {
   }
 
   public async historical(date: string, baseParam?: string, symbols?: string,): Promise<IHistorical>{
-    const base = typeof baseParam !== 'undefined' ? `&base=${baseParam}` : '';
+    const base: string = typeof baseParam !== 'undefined' ? `&base=${baseParam}` : '';
 
-    const url = typeof symbols !== 'undefined'
+    const url: string = typeof symbols !== 'undefined'
       ? `${date}?access_key=${this._access_key}${base}&symbols=${symbols}`
       : `${date}?access_key=${this._access_key}${base}`;
     
@@ -87,4 +91,23 @@ class FixerWrapper {
     });
     return response.data;
   }
-};
+
+  public async fluctuation(params: IFluctuationParams ): Promise<IFluctuation> {
+    const {
+      startDate,
+      endDate,
+      baseParam,
+      symbols } = params;
+    const base: string = typeof baseParam !== 'undefined' ? `&base=${baseParam}` : '';
+    const url: string = typeof symbols !== 'undefined'
+      ? `/fluctuation?access_key=${this._access_key}&start_date=${startDate}&end_date=${endDate}${base}&symbols=${symbols}`
+      : `/fluctuation?access_key=${this._access_key}&start_date=${startDate}&end_date=${endDate}${base}`;
+    
+    const response = await axios({
+      url: url,
+      method: 'GET',
+      baseURL: URL_BASE
+    });
+    return response.data;
+  }
+}
