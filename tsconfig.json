@@ -10,7 +10,8 @@
     "declaration": true,
     "outDir": "dist",
     "rootDir": "src",
-    "strict": true
+    "strict": true,
+    "typeRoots": ["./dist/lib/"]
   },
   "exclude": [
     "node_modules",
