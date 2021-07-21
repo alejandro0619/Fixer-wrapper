@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc"
   },
-  "keywords": [],
+  "keywords": ["fixer", "currency", "converter", "fixer.io", "fixer.io"],
   "author": "Spaghetti <alejandrolpz0619@gmail.com>",
   "license": "ISC",
   "dependencies": {
