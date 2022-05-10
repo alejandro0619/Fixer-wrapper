@@ -33,7 +33,7 @@
   ### [Offical documentation](https://fixer.io/documentation)
   ### [Create an account](https://fixer.io/product)
   ----
-      NOTE:
+      IMPORTANT:
       See sample section to know how to start using this wrapper methods.
   ----
 
