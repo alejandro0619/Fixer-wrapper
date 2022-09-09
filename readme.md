@@ -6,7 +6,7 @@
   <br>
 </h1>
 
-<h3 align="center"> Useful Fixer.io unofficial wrapper for Javascript </h3>
+<h3 align="center"> Useful Fixer.io unofficial wrapper for Javascript. </h3>
 
 
 ## Features 🦾
